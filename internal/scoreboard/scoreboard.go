@@ -18,6 +18,10 @@ type Score struct {
 	Created time.Time `json:"created"`
 }
 
+func (sc Score) String() string {
+	return fmt.Sprintf("Player %s has %d points.\n", sc.Name, sc.Points)
+}
+
 // scoreboardCollection represents a collection of scores.
 type scoreboardCollection struct {
 	Scores []Score `json:"scores"`
