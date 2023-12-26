@@ -34,9 +34,16 @@ func Save(score Score) (scores []Score, err error) {
 	if err != nil {
 		return scores, fmt.Errorf("failed to load scores: %v", err)
 	}
+
 	scores = append(scores, score)
-	ad := scoreboardCollection{Scores: scores}
-	_ = write(ad)
+
+	scoreboard := scoreboardCollection{Scores: scores}
+
+	err = write(scoreboard)
+	if err != nil {
+		return scores, fmt.Errorf("failed to saved scores: %v", err)
+	}
+
 	return scores, nil
 }
 
