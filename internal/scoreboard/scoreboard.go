@@ -82,7 +82,7 @@ func Load() (scores []Score, err error) {
 	}
 
 	scores = scoreboard.Scores
-	return scores, nil
+	return sortScoreByPoints(scores), nil
 }
 
 // read reads a JSON file and parses its content into a scoreboardCollection.
@@ -112,4 +112,15 @@ func read() (scoreboard scoreboardCollection, err error) {
 	}
 
 	return scoreboard, nil
+}
+
+func sortScoreByPoints(scores []Score) []Score {
+	for i := 0; i < len(scores)-1; i++ {
+		for j := i + 1; j < len(scores); j++ {
+			if scores[i].Points < scores[j].Points {
+				scores[i], scores[j] = scores[j], scores[i]
+			}
+		}
+	}
+	return scores
 }
