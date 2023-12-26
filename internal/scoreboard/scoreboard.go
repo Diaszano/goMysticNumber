@@ -45,7 +45,7 @@ func Save(score Score) (scores []Score, err error) {
 
 	err = write(scoreboard)
 	if err != nil {
-		return scores, fmt.Errorf("failed to saved scores: %v", err)
+		return scores, fmt.Errorf("failed to save scores: %v", err)
 	}
 
 	return scores, nil
@@ -118,6 +118,7 @@ func read() (scoreboard scoreboardCollection, err error) {
 	return scoreboard, nil
 }
 
+// sortScoreByPoints sorts the scores in descending order based on points.
 func sortScoreByPoints(scores []Score) []Score {
 	for i := 0; i < len(scores)-1; i++ {
 		for j := i + 1; j < len(scores); j++ {
