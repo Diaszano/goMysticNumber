@@ -14,7 +14,7 @@ const (
 // to make up to gameLimit attempts to guess it. The function returns the final
 // score after the game.
 func Play() uint8 {
-	number := random.Range(1, 100)
+	number := random.Range(1, 99)
 	points := pointsStart
 
 	for i := 0; i < gameLimit; i++ {
