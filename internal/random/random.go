@@ -11,8 +11,8 @@ func Range(minimum, maximum int) int {
 	if length <= 0 {
 		panic("invalid argument to Range")
 	}
-	vector := generateVector(length, minimum)
-	return vector[rand.Intn(length)]
+	vector := generateVector(length+1, minimum)
+	return vector[rand.Intn(length+1)]
 }
 
 // generateVector generates a vector of integers starting from the initial value.
